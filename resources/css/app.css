@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#header{
+    
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    padding-top: 4rem;
+    min-height: 100vh;
+    z-index:-1;
+}
