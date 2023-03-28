@@ -92,8 +92,8 @@
                             <x-text-input type="tel" id="phone" name="phone" />
                         </div>
 
-                        <div class="flex flex-row justify-between">
-                            <x-primary-button>Send</x-primary-button>
+                        <div class="flex flex-row justify-end">
+                            <x-primary-button class="g-recaptcha mr-4" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" data-callback='onSubmit' data-action='submit'> Send</x-primary-button>
                             <x-delete-button type="button" class="z-50 cursor-pointer" @click="formModal = false">Close</x-delete-button>
                         </div>
                     </form>

@@ -135,17 +135,26 @@ class CampaignController extends Controller
      */
     public function postForm(Request $request, Homepage $homepage)
     {
-        Submission::create([
+        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+        $response = $recaptcha->setExpectedHostname('recaptcha-demo.appspot.com')
+                        ->verify($gRecaptchaResponse, $remoteIp);
+        if ($response->isSuccess()) {
+            Submission::create([
             'name' => $request->name,
             'company' => $request->company,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'homepage_number' => $homepage->id,
-        ]);
+            ]);
 
-        Mail::to(env('MAIL_RECIPIENT'))->send(new SubmissionSubmitted($request));
+            Mail::to(env('MAIL_RECIPIENT'))->send(new SubmissionSubmitted($request));
 
-        return redirect()->route('campaign.show', 'thanks');
+            return redirect()->route('campaign.show', 'thanks');
+        } 
+        else {
+            $errors = $response->getErrorCodes();
+        };
+
     }
 
     /**

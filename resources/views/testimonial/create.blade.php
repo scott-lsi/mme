@@ -2,7 +2,7 @@
     <x-slot:header>Create New Testimonial</x-slot>
     <div class="container mx-auto"> 
        
-    <form action="{{ route('salesperson.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('testimonial.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
 

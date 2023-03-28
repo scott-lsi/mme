@@ -12,6 +12,10 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script> function onSubmit(token) {document.getElementById("demo-form").submit();} </script>
+
+
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="flex bg-gray-100">
